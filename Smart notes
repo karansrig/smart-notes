@@ -1,0 +1,1120 @@
+PROJECT: SMARTKEEP NOTES
+TAGLINE: Your thoughts. Your space. Your notes.
+
+ROLE:
+Act as a senior Flutter architect, senior Android developer,
+UI/UX designer, database engineer and QA engineer.
+
+Build a complete, production-quality, 100% offline Android
+notes application named "SmartKeep Notes".
+
+TECHNOLOGY:
+- Flutter framework
+- Dart language
+- Material 3
+- Android native integration using Kotlin
+- SQLite local database
+- Provider state management
+- Native Android home screen widgets
+
+The application should feel like a premium, professionally
+designed productivity app inspired by Google Keep, Apple Notes
+and modern minimalist productivity applications.
+
+Do not create a simple demo or prototype.
+
+Deliver a complete, functional Android application with
+all source files, native configurations, tests and build
+automation.
+
+==================================================
+1. DESIGN PHILOSOPHY
+==================================================
+
+Create a premium, minimalist, modern and highly interactive UI.
+
+DESIGN PRINCIPLES:
+
+1. Clean and uncluttered interface.
+2. Generous whitespace.
+3. Beautiful pastel note cards.
+4. Consistent rounded corners.
+5. Subtle shadows and borders.
+6. Excellent typography and readability.
+7. Smooth transitions and animations.
+8. Consistent spacing across every screen.
+9. Minimal unnecessary buttons.
+10. Easy one-handed operation.
+
+Avoid:
+- Overcrowded interfaces.
+- Excessive gradients.
+- Excessive shadows.
+- Too many accent colors.
+- Large unnecessary headers.
+- Complicated navigation.
+- Cartoon-style illustrations.
+- Outdated Android design patterns.
+
+The application should look elegant and mature.
+
+==================================================
+2. GLOBAL DESIGN SYSTEM
+==================================================
+
+Use Material 3 with a custom design system.
+
+COLOR TOKENS:
+
+Primary blue:       #1A73E8
+Secondary blue:     #4285F4
+Scaffold:           #F8F9FC
+Surface:            #FFFFFF
+Primary text:       #202124
+Secondary text:     #5F6368
+Border:             #E8EAED
+Divider:            #F0F1F3
+Success:            #137333
+Success background: #E6F4EA
+Danger:             #D93025
+Muted:              #9AA0A6
+
+NOTE PASTEL COLORS:
+
+1. Default White  #FFFFFFFF
+2. Warm Cream     #FFFFF8E1
+3. Soft Coral     #FFFFEBEE
+4. Mint Leaf      #FFE8F5E9
+5. Sky Breeze     #FFE3F2FD
+6. Lavender Mist  #FFF3E5F5
+7. Peach Glow     #FFFBE9E7
+8. Sage Clay      #FFF1F8E9
+
+TYPOGRAPHY:
+
+Use Google Fonts Inter or a comparable clean sans-serif font.
+
+Typography hierarchy:
+- Screen heading: 24px, semibold.
+- Note title: 18px, semibold.
+- Body text: 14–15px.
+- Metadata: 11–12px.
+- Section heading: 12px, semibold, letter spacing.
+
+SPACING SYSTEM:
+
+Use an 8-point spacing system.
+
+4, 8, 12, 16, 20, 24, 32.
+
+CORNER RADII:
+
+- Note cards: 18px.
+- Search field: 24px.
+- Buttons: 14px.
+- Bottom sheet: 28px.
+- Input containers: 12px.
+- Dialogs: 24px.
+
+ANIMATIONS:
+
+- Card opening: 200–250ms.
+- Color selection: 180ms.
+- Checkbox: 150ms.
+- Bottom sheet: 250ms.
+- Navigation: smooth transitions.
+- Use AnimatedContainer, AnimatedSwitcher,
+  Hero and implicit animations appropriately.
+
+Use haptic feedback for meaningful interactions.
+
+Support light and dark themes.
+
+==================================================
+3. APPLICATION NAVIGATION
+==================================================
+
+Use a modern bottom navigation system.
+
+Main destinations:
+
+1. Notes
+2. Search
+3. Labels
+4. Settings
+
+Place a prominent floating action button above the
+bottom navigation for creating notes.
+
+The FAB should have a clean blue circular appearance
+with a white plus icon.
+
+On tapping the FAB, display an elegant expandable
+creation menu with:
+
+- New text note
+- New checklist
+- New expense sheet
+
+Use a smooth expanding animation.
+
+Show the current screen clearly without making the
+bottom navigation visually heavy.
+
+==================================================
+4. HOME FEED SCREEN
+==================================================
+
+Create an exceptionally polished home screen.
+
+BACKGROUND:
+#F8F9FC
+
+TOP HEADER:
+
+At the top:
+
+- App icon and SmartKeep Notes title.
+- Small profile-free settings shortcut.
+- Search field underneath.
+
+SEARCH BAR:
+
+- White background.
+- Rounded 24px corners.
+- Search icon.
+- Placeholder: "Search your notes".
+- Clear X icon when text is entered.
+- Subtle border.
+- Optional filter icon.
+
+Search should instantly search:
+- Titles.
+- Body content.
+- Checklist text.
+- Spreadsheet descriptions.
+- Spreadsheet amounts.
+- Labels.
+
+No internet search or remote processing.
+
+PINNED SECTION:
+
+Display a PINNED heading only when pinned notes exist.
+
+OTHERS SECTION:
+
+Display all remaining active notes.
+
+NOTE GRID:
+
+Use flutter_staggered_grid_view.
+
+MasonryGridView.count:
+crossAxisCount = 2.
+
+Use a responsive layout with suitable spacing.
+
+NOTE CARD DESIGN:
+
+Each note card should have:
+
+- Pastel background.
+- Thin #E0E0E0 border.
+- 18px rounded corners.
+- Very subtle shadow.
+- Title.
+- Body preview.
+- Checklist preview if applicable.
+- Expense summary if applicable.
+- Small date metadata.
+- Pin icon in the top-right corner.
+
+CARD INTERACTIONS:
+
+- Tap: open editor.
+- Long press: selection mode.
+- Swipe: archive.
+- Quick pin/unpin.
+- Multi-select.
+- Delete selected.
+- Change selected note color.
+- Duplicate selected note.
+
+BODY PREVIEW:
+
+Show up to five lines.
+
+CHECKLIST PREVIEW:
+
+Show up to four items.
+
+Checked items:
+- Strikethrough.
+- Muted grey color.
+
+If additional items exist, show "+X more items".
+
+EXPENSE PREVIEW:
+
+Show:
+"X rows | ∑ ₹Total"
+
+Use Indian currency formatting.
+
+CARD EMPTY STATES:
+
+A note without content should not display
+unnecessary blank preview areas.
+
+BOTTOM NAVIGATION:
+
+Use:
+Notes | Search | Labels | Settings.
+
+FAB:
+Blue circular plus button.
+
+HOME EMPTY STATE:
+
+Show a subtle illustration or clean icon,
+with the text:
+
+"Your space for ideas"
+
+"Create your first note to get started."
+
+Do not use a large distracting illustration.
+
+==================================================
+5. NOTE EDITOR SCREEN
+==================================================
+
+This is the most important screen.
+
+Design it as a distraction-free writing environment.
+
+The entire editor background should adapt to
+the selected pastel note color.
+
+TOP TOOLBAR:
+
+Left:
+- Back arrow.
+
+Center:
+- Edited timestamp.
+- Saving/Saved status.
+
+Right:
+- Pin toggle.
+- Palette button.
+- More menu.
+- Delete option.
+
+Use a compact toolbar.
+
+TITLE:
+
+Large, clean title input.
+
+Placeholder:
+"Title"
+
+Body:
+"Start writing..."
+
+Avoid unnecessary borders around text fields.
+
+The editor should feel like writing on a clean sheet.
+
+AUTOSAVE:
+
+- Debounce after 400ms.
+- Save title changes.
+- Save content changes.
+- Save checklist changes.
+- Save spreadsheet changes.
+- Save color and pin changes.
+- Flush pending changes on navigation.
+- Flush pending changes on application pause.
+- Prevent out-of-order asynchronous saves.
+- Do not create duplicate notes.
+- Show a subtle saving indicator.
+
+BACK NAVIGATION:
+
+Use PopScope.
+
+If a new note is completely empty:
+discard it.
+
+If a note contains meaningful content:
+save it automatically.
+
+Do not display an unnecessary save confirmation.
+
+COLOR PICKER:
+
+Open a horizontal pastel color selector.
+
+Display circular swatches.
+
+Selected color:
+- Animated outline.
+- Checkmark.
+- Smooth selection animation.
+
+==================================================
+6. CHECKLIST EDITOR
+==================================================
+
+Create a dedicated checklist block.
+
+HEADER:
+
+CHECKLIST
+completed / total
+
+Add Item button on the right.
+
+Each item should have:
+
+- Checkbox.
+- Inline editable text field.
+- Move up button.
+- Move down button.
+- Remove button.
+
+CHECKED ITEMS:
+
+- Strikethrough text.
+- Muted grey.
+- Smooth checkbox animation.
+
+FEATURES:
+
+- Add item.
+- Edit item.
+- Delete item.
+- Reorder items.
+- Move completed items to bottom (optional setting).
+- Clear completed items.
+- Display progress.
+
+Use UUIDs for checklist items.
+
+Keyboard:
+Use next/done actions appropriately.
+
+Avoid excessive row height.
+
+==================================================
+7. MINI SPREADSHEET / EXPENSE SHEET
+==================================================
+
+This is a signature feature of SmartKeep Notes.
+
+Create a premium embedded spreadsheet card.
+
+CARD:
+
+White background.
+Rounded 16px.
+Subtle border.
+
+HEADER:
+
+MINI SPREADSHEET
+
+AUTO-SUM
+
+Add Row button.
+
+TABLE COLUMNS:
+
+Description / Item
+Amount (₹)
+Delete icon
+
+FLEX:
+
+Description: 1.6
+Amount: 1.0
+
+INPUTS:
+
+Description:
+Normal text keyboard.
+
+Amount:
+Decimal numeric keyboard.
+
+FUNCTIONALITY:
+
+- Add rows.
+- Edit descriptions.
+- Edit amounts.
+- Delete rows.
+- Reorder rows.
+- Duplicate rows.
+- Automatically calculate total.
+- Ignore commas and whitespace when parsing.
+- Handle empty and invalid values safely.
+- Support negative values.
+- Avoid crashes on invalid input.
+
+LIVE TOTAL:
+
+Update immediately on every keystroke.
+
+FORMAT:
+
+Use intl NumberFormat.decimalPattern('en_IN').
+
+Example:
+
+₹1,25,000.00
+
+SUMMARY FOOTER:
+
+Green background: #E6F4EA.
+Green text: #137333.
+
+Left:
+TOTAL SUM (X ITEMS)
+
+Right:
+₹ Total
+
+Make the total visually prominent.
+
+ADDITIONAL CALCULATIONS:
+
+Support:
+- Total.
+- Average.
+- Minimum.
+- Maximum.
+
+Provide optional CSV export.
+
+==================================================
+8. NOTE ORGANIZATION
+==================================================
+
+Implement:
+
+- Labels.
+- Multiple labels per note.
+- Archive.
+- Trash.
+- Recently edited.
+- Pinned notes.
+- Favorite notes.
+- Duplicate note.
+- Multi-select.
+- Sort by newest.
+- Sort by oldest.
+- Sort alphabetically.
+- Filter by color.
+- Filter by note type.
+
+TRASH:
+
+Keep deleted notes for 30 days.
+
+Provide:
+- Restore.
+- Permanently delete.
+- Empty trash.
+
+ARCHIVE:
+
+Archived notes should disappear from the main feed
+but remain searchable and recoverable.
+
+==================================================
+9. SEARCH EXPERIENCE
+==================================================
+
+Create a dedicated search screen.
+
+Search across all note data.
+
+Filters:
+
+- All.
+- Text.
+- Checklist.
+- Expense.
+- Pinned.
+- Archived.
+
+Optional advanced filters:
+
+- Date range.
+- Color.
+- Labels.
+- Recently edited.
+
+Display search results in the same card design
+as the home feed.
+
+Highlight matching search text where practical.
+
+==================================================
+10. SETTINGS SCREEN
+==================================================
+
+Create a premium, organized settings interface.
+
+Sections:
+
+APPEARANCE:
+- Light mode.
+- Dark mode.
+- System default.
+- Default note color.
+- Dynamic text size.
+
+SECURITY:
+- Enable biometric lock.
+- Configure PIN.
+- Individual note locking.
+- Automatic app locking.
+- Hide previews in app switcher.
+
+DATA:
+- Export all notes.
+- Import backup.
+- Backup verification.
+- Export expense sheets.
+- Storage usage.
+- Clear trash.
+
+PRODUCTIVITY:
+- Default sorting.
+- Reminder preferences.
+- Haptic feedback.
+- Checklist behavior.
+
+ABOUT:
+- SmartKeep Notes version.
+- Privacy information.
+- Open-source licenses.
+
+==================================================
+11. BIOMETRIC SECURITY
+==================================================
+
+Use local_auth.
+
+Implement:
+- Fingerprint authentication.
+- Face authentication where supported.
+- PIN fallback.
+- Auto-lock after inactivity.
+- Optional individual note locks.
+
+Use flutter_secure_storage for storing
+sensitive encryption keys and security configuration.
+
+IMPORTANT:
+Do not treat biometric authentication alone
+as database encryption.
+
+If database encryption is enabled, use a compatible
+SQLCipher-backed SQLite solution.
+
+Ensure backup encryption is handled separately.
+
+==================================================
+12. LOCAL DATABASE ARCHITECTURE
+==================================================
+
+Use:
+- sqflite.
+- path.
+- path_provider.
+- provider.
+- uuid.
+
+Create a repository-based architecture.
+
+CORE MODEL:
+
+ChecklistItem:
+- id: String UUID.
+- text: String.
+- isChecked: bool.
+- toJson().
+- fromJson().
+
+SheetRow:
+- id: String UUID.
+- description: String.
+- amount: String.
+- toJson().
+- fromJson().
+
+NoteModel:
+- id: int?.
+- title: String.
+- content: String.
+- colorHex: int.
+- isPinned: bool.
+- checklist: List<ChecklistItem>.
+- sheetRows: List<SheetRow>.
+- updatedAt: int.
+- sheetTotal computed getter.
+
+Store checklist and sheetRows as JSON strings
+in SQLite for the initial implementation.
+
+Use a versioned database with migration support.
+
+Add appropriate indexes.
+
+Sort notes using:
+
+isPinned DESC, updatedAt DESC.
+
+Use transactions for multi-step updates.
+
+SEED NOTE:
+
+On first launch, create:
+
+Title:
+"Welcome to SmartKeep Notes"
+
+Color:
+Warm Cream.
+
+Include:
+- A sample checklist.
+- Three expense rows.
+- A calculated total.
+- A short welcome message.
+
+Never recreate the welcome note if it already exists.
+
+==================================================
+13. AUTOSAVE AND DATA INTEGRITY
+==================================================
+
+Create a dedicated autosave controller/service.
+
+Requirements:
+
+- 400ms debounce.
+- Cancel previous pending debounce.
+- Serialize writes safely.
+- Prevent older saves overwriting newer changes.
+- Save on application lifecycle pause.
+- Flush before leaving the editor.
+- Avoid unnecessary writes.
+- Recover safely after application termination.
+- Show save errors clearly.
+- Never silently discard existing notes.
+
+Test these scenarios:
+
+1. User types and immediately presses back.
+2. User types and force-closes the app.
+3. User changes note color.
+4. User checks an item.
+5. User changes spreadsheet amounts.
+6. User deletes a row.
+7. User rapidly changes multiple fields.
+8. Device restarts during editing.
+
+==================================================
+14. BACKUP AND RESTORE
+==================================================
+
+Implement fully offline backup.
+
+EXPORT:
+
+Export all notes to a structured JSON file.
+
+Include:
+- Note IDs.
+- Titles.
+- Content.
+- Colors.
+- Pin state.
+- Checklist.
+- Spreadsheet rows.
+- Labels.
+- Creation/update metadata where available.
+
+IMPORT:
+
+- Validate backup.
+- Handle duplicate IDs.
+- Show import summary.
+- Avoid overwriting existing notes unexpectedly.
+- Use a transaction.
+- Provide error recovery.
+
+Allow users to save backups locally
+or share them using Android's share interface.
+
+==================================================
+15. ANDROID HOME SCREEN WIDGETS
+==================================================
+
+Use home_widget and native Kotlin AppWidgetProvider.
+
+Create three widget types:
+
+WIDGET 1: QUICK NOTE
+- Pinned or selected note.
+- Title.
+- Content preview.
+- Tap to open editor.
+
+WIDGET 2: CHECKLIST
+- Display pending items.
+- Show completed status.
+- Open the corresponding note.
+
+WIDGET 3: EXPENSE SUMMARY
+- Expense sheet title.
+- Number of rows.
+- Total amount.
+- Open editor.
+
+NATIVE FILES:
+
+NoteWidgetProvider.kt
+ChecklistWidgetProvider.kt
+ExpenseWidgetProvider.kt
+
+Layouts:
+
+widget_note_card.xml
+widget_checklist.xml
+widget_expense.xml
+
+Widget metadata:
+
+note_widget_info.xml
+checklist_widget_info.xml
+expense_widget_info.xml
+
+Widget specifications:
+
+- Rounded pastel backgrounds.
+- 3x2 minimum grid size where appropriate.
+- Resizable.
+- Material-inspired appearance.
+- Proper empty state.
+- Native click actions.
+- Deep linking to specific note IDs.
+
+Use SharedPreferences through home_widget.
+
+Refresh widgets after:
+- Saving a note.
+- Pinning/unpinning.
+- Deleting.
+- Changing checklist status.
+- Updating expense rows.
+
+Test widgets on actual Android launchers.
+
+Do not assume Flutter widget UI can be rendered
+directly inside Android RemoteViews.
+
+==================================================
+16. OPTIONAL PRODUCTIVITY FEATURES
+==================================================
+
+Implement where practical:
+
+- Local reminders.
+- Rich text formatting.
+- Voice recordings.
+- Drawing canvas.
+- Image attachments.
+- Document attachments.
+- Word count.
+- Duplicate note.
+- CSV export.
+- PDF export.
+- Undo/redo.
+
+All features must work without cloud services.
+
+If any feature is deferred, clearly document it.
+Do not provide fake buttons or non-functional placeholders.
+
+==================================================
+17. PROJECT ARCHITECTURE
+==================================================
+
+Use a maintainable feature-based structure.
+
+lib/
+  main.dart
+  app.dart
+
+  core/
+    database/
+    security/
+    backup/
+    notifications/
+    utils/
+
+  models/
+    note_model.dart
+    checklist_item.dart
+    sheet_row.dart
+    label_model.dart
+
+  repositories/
+    note_repository.dart
+    backup_repository.dart
+
+  providers/
+    note_provider.dart
+    settings_provider.dart
+
+  features/
+    home/
+    editor/
+    checklist/
+    spreadsheet/
+    search/
+    labels/
+    reminders/
+    settings/
+    trash/
+
+  services/
+    widget_service.dart
+    notification_service.dart
+    autosave_service.dart
+
+  theme/
+    app_theme.dart
+    note_colors.dart
+
+  widgets/
+    note_card.dart
+    search_bar.dart
+    color_picker.dart
+    empty_state.dart
+
+android/
+  app/
+    src/main/
+      AndroidManifest.xml
+      kotlin/
+      res/
+        layout/
+        drawable/
+        xml/
+
+test/
+  models/
+  repositories/
+  providers/
+  widgets/
+  integration/
+
+.github/
+  workflows/
+    build_apk.yml
+
+Keep files modular.
+
+Avoid giant Dart files.
+
+Use meaningful names and comments.
+
+==================================================
+18. TESTING REQUIREMENTS
+==================================================
+
+Create tests for:
+
+MODEL TESTS:
+- JSON serialization.
+- JSON deserialization.
+- Expense total calculation.
+- Invalid amount handling.
+
+DATABASE TESTS:
+- Insert note.
+- Update note.
+- Delete note.
+- Pin ordering.
+- Search.
+- Checklist persistence.
+- Spreadsheet persistence.
+- Database migrations.
+
+PROVIDER TESTS:
+- Reactive updates.
+- Sorting.
+- Filtering.
+- Autosave.
+
+WIDGET TESTS:
+- Home feed.
+- Note card.
+- Editor.
+- Checklist.
+- Expense calculator.
+- Color selector.
+
+INTEGRATION TESTS:
+- Create note.
+- Edit note.
+- Restart application.
+- Verify persistence.
+- Create expense sheet.
+- Verify total.
+- Delete and restore note.
+
+==================================================
+19. PERFORMANCE REQUIREMENTS
+==================================================
+
+Optimize for long-term usage.
+
+- Fast application startup.
+- Efficient SQLite queries.
+- Lazy-loaded note grid.
+- Minimal unnecessary widget rebuilds.
+- Dispose controllers correctly.
+- Prevent memory leaks.
+- Avoid excessive database reads.
+- Support thousands of notes.
+- Responsive keyboard handling.
+- Smooth scrolling.
+- Avoid UI freezes during backup operations.
+
+The application should remain responsive
+with at least 5,000 stored notes.
+
+==================================================
+20. BUILD AND GITHUB ACTIONS
+==================================================
+
+Use Java 17.
+
+Use subosito/flutter-action@v2.
+
+Create a GitHub Actions workflow:
+
+.github/workflows/build_apk.yml
+
+Workflow should:
+
+1. Checkout repository.
+2. Set up Java 17.
+3. Set up Flutter.
+4. Install dependencies.
+5. Run dart format checks.
+6. Run flutter analyze.
+7. Run unit tests.
+8. Build debug APK.
+9. Build signed release APK when signing
+   secrets are configured.
+10. Upload APK artifacts.
+
+Generate:
+
+build/app/outputs/flutter-apk/app-debug.apk
+
+Provide the APK artifact through GitHub Actions.
+
+Include pubspec.lock.
+
+Pin compatible dependency versions.
+Do not use unverified or obsolete package APIs.
+
+==================================================
+21. FINAL DELIVERY REQUIREMENTS
+==================================================
+
+Deliver all of the following:
+
+1. Complete project directory structure.
+2. pubspec.yaml.
+3. pubspec.lock.
+4. All Dart source files.
+5. All model classes.
+6. Database implementation.
+7. Providers.
+8. Repository layer.
+9. All UI screens.
+10. Theme and color system.
+11. AndroidManifest.xml.
+12. Kotlin widget providers.
+13. Widget XML layouts.
+14. Widget metadata.
+15. Deep-link implementation.
+16. GitHub Actions workflow.
+17. Unit tests.
+18. Integration tests.
+19. README.md.
+20. APK build instructions.
+21. Debug APK.
+22. Signed release APK configuration.
+
+QUALITY RULES:
+
+- No pseudocode.
+- No incomplete source files.
+- No TODO placeholders for required features.
+- No fake functionality.
+- No cloud database.
+- No mandatory login.
+- No internet dependency at runtime.
+- No data loss during application updates.
+- No unnecessary permissions.
+- No deprecated Flutter APIs.
+- No compilation errors.
+- No analyzer errors.
+
+If the development environment supports Flutter and
+Android SDK, actually build and test the APK.
+
+Do not claim that an APK was generated unless the
+build completed successfully.
+
+If a feature cannot be implemented in the current
+environment, provide its complete source and clearly
+identify what remains unverified.
+
+FIRST DEVELOPMENT TASK:
+
+Start by creating the complete project architecture
+and design system.
+
+Then implement the database and repository layer.
+
+Next, implement the home screen and note editor.
+
+Then implement checklist and spreadsheet functionality.
+
+After core functionality is verified, implement
+security, backup and Android widgets.
+
+Finally, run all tests and build the APK.
+
+The final application should feel like a premium,
+beautiful, reliable personal productivity application.
+
+APPLICATION NAME:
+SmartKeep Notes
+
+TAGLINE:
+Your thoughts. Your space. Your notes.
